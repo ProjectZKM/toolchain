@@ -80,7 +80,7 @@ do_install() {
 	fi
 	if [ ! -d "$dir" ] || [ "$reinstall" = "1" ];then
 		echo "Downloading... $pkg ..."
-		wget --show-progress -q -c https://github.com/ProjectZKM/toolchain/releases/download/$version/$pkg -O ~/.zkm-toolchain/$pkg
+		curl -L -C - https://github.com/ProjectZKM/toolchain/releases/download/$version/$pkg -o ~/.zkm-toolchain/$pkg
 		if [ $? -ne "0" ];then
 			echo "Bad Version? $version"
 			rm -f ~/.zkm-toolchain/$pkg
@@ -166,7 +166,7 @@ fi
 
 if [ "$subcom" = "selfupdate" ];then
 	abs=`readlink -f $cmd`
-	wget -q https://raw.githubusercontent.com/ProjectZKM/toolchain/refs/heads/main/zkmup -O $abs
+	curl -L https://raw.githubusercontent.com/ProjectZKM/toolchain/refs/heads/main/zkmup -o $abs
 	chmod +x $abs
 	exit 0
 fi
