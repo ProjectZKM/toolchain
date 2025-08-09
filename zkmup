@@ -139,6 +139,7 @@ do_setup() {
 	echo ${echo_e_opt} "to your .bashrc/.zshrc/.profile to use ProjectZKM toolchain"
 	echo ${echo_e_opt} "Starting a new shell session..."
 	cd ${origin_dir}
+	. ~/.zkm-toolchain/env
 	$SHELL
 }
 
