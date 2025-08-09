@@ -165,10 +165,20 @@ if [ "$subcom" = "setup" ];then
 fi
 
 if [ "$subcom" = "selfupdate" ];then
+	cd ~/.zkm-toolchain/bin
 	abs=`readlink -f $cmd`
-	curl -L https://raw.githubusercontent.com/ProjectZKM/toolchain/refs/heads/main/zkmup -o $abs
-	chmod +x $abs
-	exit 0
+	abs_tmp=${abs}_tmp
+	curl -L https://raw.githubusercontent.com/ProjectZKM/toolchain/refs/heads/main/zkmup -o $abs_tmp
+	ok=`head -1 $abs_tmp | grep '#!/bin/sh'`
+	if [ -n "$ok" ];then
+		mv $abs_tmp $abs
+		chmod +x $abs
+		exit 0
+	else
+		echo "fail to download zkmup"
+		rm -f $abs_tmp
+		exit 1
+	fi
 fi
 
 echo "$cmd Usage"
