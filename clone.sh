@@ -29,6 +29,7 @@ sed -i.backup 's@#install.sysconfdir = .*@install.sysconfdir = "etc"@' rust-work
 sed -i.backup 's@#build.docs = .*@build.docs = false@' rust-workspace/bootstrap.toml
 sed -i.backup 's@#rust.lld = .*@rust.lld = true@' rust-workspace/bootstrap.toml
 sed -i.backup 's@#llvm.download-ci-llvm = .*@llvm.download-ci-llvm = false@' rust-workspace/bootstrap.toml
+sed -i.backup 's@#llvm.clang = .*@llvm.clang = true@' rust-workspace/bootstrap.toml
 sed -i.backup 's@#build.extended = .*@build.extended = true@' rust-workspace/bootstrap.toml
 
 
