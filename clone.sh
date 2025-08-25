@@ -32,21 +32,25 @@ sed -i.backup 's@#llvm.download-ci-llvm = .*@llvm.download-ci-llvm = false@' rus
 sed -i.backup 's@#llvm.clang = .*@llvm.clang = true@' rust-workspace/bootstrap.toml
 sed -i.backup 's@#build.extended = .*@build.extended = true@' rust-workspace/bootstrap.toml
 
+#sed -i.backup 's@#llvm.link-jobs = .*@llvm.link-jobs = 8@' rust-workspace/bootstrap.toml
+#sed -i.backup 's@#llvm.use-linker = .*@llvm.use-linker = "lld"@' rust-workspace/bootstrap.toml
+#sed -i.backup 's@#llvm.optimize = .*@llvm.optimize = false@' rust-workspace/bootstrap.toml
 
-if [ -d cargo ];then
-	git -C cargo checkout .
-	git -C cargo clean -fdx
-	git -C cargo pull --rebase
+
+if [ -d newlib ];then
+	git -C newlib checkout .
+	git -C newlib clean -fdx
+	git -C newlib checkout cygwin-3_6-branch
+	git -C newlib pull --rebase
 else
-	git clone https://github.com/rust-lang/cargo.git
+	git clone -b cygwin-3_6-branch https://sourceware.org/git/newlib-cygwin.git newlib
 fi
-
-if [ -d rust-clippy ];then
-	git -C rust-clippy checkout .
-	git -C rust-clippy clean -fdx
-	git -C rust-clippy pull --rebase
+if [ -d binutils-gdb ];then
+	git -C binutils-gdb checkout .
+	git -C binutils-gdb clean -fdx
+	git -C binutils-gdb pull --rebase
 else
-	git clone https://github.com/rust-lang/rust-clippy.git
+	git clone https://sourceware.org/git/binutils-gdb.git binutils-gdb
 fi
 
 if [ -d zkm ];then

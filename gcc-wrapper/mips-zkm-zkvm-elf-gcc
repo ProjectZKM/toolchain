@@ -1,0 +1,7 @@
+#!/bin/sh
+
+commandPath=`command -v $0`
+binpath=`dirname ${commandPath}`
+CLANG_BIN=${binpath}/clang
+
+exec $CLANG_BIN -nostdinc --target=mipsel-zkm-elf -msoft-float -isystem $binpath/../lib/mipsel-zkm-elf/include/ -isystem $binpath/../lib/clang/21/include $@
