@@ -3,7 +3,7 @@
 origin_dir=`pwd`
 mkdir -p ~/.zkm-toolchain/bin
 cd ~/.zkm-toolchain
-wget -q https://raw.githubusercontent.com/ProjectZKM/toolchain/refs/heads/main/zkmup -O bin/zkmup
+curl https://raw.githubusercontent.com/ProjectZKM/toolchain/refs/heads/main/zkmup -o bin/zkmup
 chmod +x ~/.zkm-toolchain/bin/zkmup 
 cd $origin_dir
 ~/.zkm-toolchain/bin/zkmup install
