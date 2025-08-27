@@ -76,3 +76,11 @@ if [ -d zkvm-benchmarks ];then
 else
 	git clone https://github.com/ProjectZKM/zkvm-benchmarks.git
 fi
+
+if [ -d reth-processor ];then
+	git -C reth-processor checkout .
+	git -C reth-processor clean -fdx
+	git -C reth-processor pull --rebase
+else
+	git clone https://github.com/ProjectZKM/reth-processor.git
+fi

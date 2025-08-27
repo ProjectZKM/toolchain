@@ -2,6 +2,7 @@
 
 CWD=`pwd`
 export PATH=${CWD}/rust-staged/bin:$PATH
+export ZIREN_ZKM_CC=mipsel-zkm-zkvm-elf-gcc 
 cargo --version
 rustc --version
 
@@ -48,6 +49,11 @@ BASEDIR=../../../emulator/test-vectors RUST_LOG=info ELF_PATH=../../../emulator/
 
 cd $CWD
 cd Ziren/examples/aggregation/host
+cargo clean
+RUST_LOG=info cargo run --release
+
+cd $CWD
+cd Ziren/examples/bitcoin/host
 cargo clean
 RUST_LOG=info cargo run --release
 
@@ -140,3 +146,8 @@ cd $CWD
 cd zkvm-benchmarks/ziren
 cargo clean
 RUSTFLAGS="-C target-cpu=native" cargo run -r --bin sha3
+
+cd $CWD
+cd reth-processor
+cargo clean
+cargo run -r --bin host -- --block-number 18884864 --chain-id 1 --cache-dir ./bin/host
