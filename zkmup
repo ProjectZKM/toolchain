@@ -99,6 +99,7 @@ setpath() {
 	local newpath=`readlink -f ~/.zkm-toolchain/$1/bin`
 	newpath="`readlink -f ~/.zkm-toolchain/bin`:$newpath"
 	echo "export PATH=$newpath:\$PATH" > ~/.zkm-toolchain/env
+	echo "export ZIREN_ZKM_CC=mipsel-zkm-zkvm-elf-gcc" >> ~/.zkm-toolchain/env
 	local q=`readlink -f ~/.zkm-toolchain/`
 	split_path=`echo $PATH | sed 's/:/ /g'`
 	for e in ${split_path};do
