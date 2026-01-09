@@ -178,4 +178,4 @@ cd $CWD
 cd reth-processor
 cargo clean
 cargo update
-cargo run -r --bin host -- --block-number 18884864 --chain-id 1 --cache-dir ./bin/host
+cargo run -r --bin host -- --block-number 9831027 --chain-id 48816 --cache-dir ./bin/host
