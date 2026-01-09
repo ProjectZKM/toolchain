@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export MACOSX_DEPLOYMENT_TARGET=12
+
 . "$HOME/.cargo/env"
 CWD=`pwd`
 TARGET=`rustc -vV | sed -n 's|host: ||p'`
