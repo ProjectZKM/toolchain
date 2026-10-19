@@ -7,8 +7,8 @@ cd ~/.zkm-toolchain
 list_available() {
 	rel=`curl -sL https://api.github.com/repos/ProjectZKM/toolchain/releases | grep '"tag_name": "[0-9]*"' | sed 's/[^0-9]*//g' | sort -r`
 	if [ -z "$rel" ];then
-		echo "No avaible toolchain to download"
-		echo "Please check you network"
+		echo "No available toolchain to download"
+		echo "Please check your network"
 		exit 1
 	fi
 	echo $rel
@@ -17,8 +17,8 @@ list_available() {
 get_last_version() {
 	rel=`curl -sL https://api.github.com/repos/ProjectZKM/toolchain/releases/latest | grep '"tag_name": "[0-9]*"' | sed 's/[^0-9]*//g' | sort -r | head -1`
 	if [ -z "$rel" ];then
-		echo "No avaible toolchain to download"
-		echo "Please check you network"
+		echo "No available toolchain to download"
+		echo "Please check your network"
 		exit 1
 	fi
 	echo $rel
@@ -135,7 +135,7 @@ do_setup() {
 		exit 1
 	fi
 	setpath $dir
-	echo ${echo_e_opt} "'\033[0;31m~/.zkm-toolcain/env\033[0m' created. Now you can add"
+	echo ${echo_e_opt} "'\033[0;31m~/.zkm-toolchain/env\033[0m' created. Now you can add"
 	echo ${echo_e_opt} "\033[0;32m     . ~/.zkm-toolchain/env\033[0m"
 	echo ${echo_e_opt} "to your .bashrc/.zshrc/.profile to use ProjectZKM toolchain"
 	echo ${echo_e_opt} "Starting a new shell session..."
@@ -183,9 +183,9 @@ if [ "$subcom" = "selfupdate" ];then
 fi
 
 echo "$cmd Usage"
-echo "     $cmd sumcommand options"
+echo "     $cmd subcommand options"
 echo "  Supported subcommands"
-echo "     list-available : List all avaiable toolchain versions on Github"
+echo "     list-available : List all available toolchain versions on Github"
 echo "     install : Download and Install toolchain"
 echo "             -v VERSION : Use VERSION instead of the latest one"
 echo "             -r         : Force redownload and reinstall"
